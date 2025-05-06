@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>PessiClicker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>PessiClicker</header>
+
+<div class="container">
+  <!-- Usines -->
+  <div class="sidebar">
+    <h2>Magasin</h2>
+    <div class="factory">🧌 Shrek Swamp Factory</div>
+    <div class="factory">🔥 Gigachad Gym</div>
+    <div class="factory">🗿 Moai Monument Builders</div>
+    <div class="factory">🔫 John Wick Arsenal</div>
+    <div class="factory">😈 Sigma Grindset Studio</div>
+    <div class="factory">🍕 Pizza Time Pizzeria</div>
+    <div class="factory">🧠 Chad AI Mainframe</div>
+    <div class="factory">🕶️ Matrix Code Generator</div>
+    <div class="factory">🐸 Dat Boi Unicycles</div>
+    <div class="factory">🧂 Salt Bae Grill</div>
+    <div class="factory">🐕 Doge Coin Mine</div>
+    <div class="factory">🎷 Epic Sax Guy Studio</div>
+    <div class="factory">🦍 Harambe Heaven Labs</div>
+    <div class="factory">🎤 Rap God Studio</div>
+    <div class="factory">🚗 Initial Drift School</div>
+    <div class="factory">🪑 He Will Sit Factory</div>
+    <div class="factory">🐢 Master Oogway Wisdom Forge</div>
+    <div class="factory">🍞 Loaf Cat Bakery</div>
+    <div class="factory">🔮 Trollface Meme Lab</div>
+    <div class="factory">👏 We Do a Little Trolling Co.</div>
+    <div class="factory">🧍 Standing Here Plant</div>
+    <div class="factory">🤓 Walter White ChemLab</div>
+    <div class="factory">👑 King Bob Palace</div>
+    <div class="factory">🍝 Mamma Mia Pasta Mill</div>
+    <div class="factory">🧢 No Cap Factory</div>
+    <div class="factory">💀 Skull Trumpet Lab</div>
+    <div class="factory">🌊 Zamazenta Wave Studio</div>
+    <div class="factory">🛸 Area 51 Supplier</div>
+    <div class="factory">📸 Camera Man Drone Base</div>
+    <div class="factory">🕺 Cringe Dance School</div>
+    <div class="factory">🧻 Ohio Infinite Toilet</div>
+    <div class="factory">👨‍🍳 Gordon Ramsay Rage Grill</div>
+    <div class="factory">🦅 Caw Factory</div>
+    <div class="factory">🔊 Bass Boosted Generator</div>
+    <div class="factory">🧊 Ice Age Acorn Mine</div>
+    <div class="factory">🌭 Glizzy Gulag</div>
+    <div class="factory">💅 Sassy Baka Studio</div>
+    <div class="factory">🧑‍🔬 Walter Jr. Breakfast Inc.</div>
+    <div class="factory">🕳️ Vine Boom Lab</div>
+    <div class="factory">🍗 Chicken Nugget Reactor</div>
+    <div class="factory">👽 Alien Dancing Unit</div>
+    <div class="factory">📦 Boxcat Assembly</div>
+    <div class="factory">😱 Momo Communication Center</div>
+    <div class="factory">🍩 Homer’s Donut Forge</div>
+    <div class="factory">🕰️ Backrooms Generator</div>
+    <div class="factory">🎮 RAGE Gamer Lab</div>
+    <div class="factory">👻 Spooky Scary Skeleton Crew</div>
+    <div class="factory">🔊 Airhorn Factory</div>
+    <div class="factory">🌈 Nyan Cat Trail Mill</div>
+  </div>
+
+  <!-- Stats -->
+  <div class="main">
+    <h2>Statistiques</h2>
+    <div class="stats">
+      <p>Total de pessis : <span id="totalpessis">0</span></p>
+      <p>Usines possédées : 0</p>
+      <p>pessis par seconde : 0</p>
+    </div>
+  </div>
+
+  <!-- Clicker -->
+  <div class="clicker">
+    <div id="counter">0 Pessi</div>
+    <img id="pessi" src="https://digitalinsighters.com/wp-content/uploads/2024/09/Pessi-lionel-messi.jpg" alt="pessi" />
+  </div>
+</div>
+
+<script>
+    let count = 0;
+    const counter = document.getElementById('counter');
+    const totalPessis = document.getElementById('totalpessis');
+    const pessi = document.getElementById('pessi');
+    const clickSound = document.getElementById('clickSound');
+    
+    // Incrémenter le compteur automatiquement chaque seconde
+    let incrementInterval = setInterval(() => {
+      count += 1; // Augmente de 1 chaque seconde
+      counter.textContent = count + " Pessis";
+      totalPessis.textContent = count;
+    }, 1000); // 1000ms = 1 seconde
+  
+    // Clic
+    pessi.addEventListener('click', () => {
+      count++;
+      counter.textContent = count + " Pessis";
+      totalPessis.textContent = count;
+  
+      // Joue le son (fqut l'ajouter)
+      clickSound.currentTime = 0;
+      clickSound.play();
+  
+      // Animation compteur
+      counter.classList.add('pulse');
+      setTimeout(() => counter.classList.remove('pulse'), 150);
+    });
+  </script>  
+
+</body>
+</html>
