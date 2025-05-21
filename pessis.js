@@ -13,14 +13,15 @@ const buySound   = new Audio('buy-sound.wav');
 const errorSound = new Audio('error-sound.wav');
 
 const factories = [
-  { name: "🧌 Shrek Swamp Factory",       price: 10,     pps: 1,   owned: 0 },
-  { name: "🔥 Gigachad Gym",              price: 50,     pps: 5,   owned: 0 },
-  { name: "🗿 Moai Monument Builders",    price: 150,    pps: 10,  owned: 0 },
-  { name: "🔫 John Wick Arsenal",         price: 400,    pps: 25,  owned: 0 },
-  { name: "😈 Sigma Grindset Studio",     price: 1000,   pps: 60,  owned: 0 },
-  { name: "🍕 Pizza Time Pizzeria",       price: 2000,   pps: 100, owned: 0 },
-  { name: "🧠 Chad AI Mainframe",         price: 5000,   pps: 200, owned: 0 },
-  { name: "🕶️ Matrix Code Generator",    price: 10000,  pps: 400, owned: 0 }
+  { name: "🖱️ Clicker",       price: 100,     pps: 0,   owned: 0 },
+  { name: "🧌 Shrek Swamp Factory",       price: 100,     pps: 1,   owned: 0 },
+  { name: "🔥 Gigachad Gym",              price: 1100,     pps: 8,   owned: 0 },
+  { name: "🗿 Moai Monument Builders",    price: 12000,    pps: 47,  owned: 0 },
+  { name: "🔫 John Wick Arsenal",         price: 130000,    pps: 260,  owned: 0 },
+  { name: "😈 Sigma Grindset Studio",     price: 1400000,   pps: 1400,  owned: 0 },
+  { name: "🍕 Pizza Time Pizzeria",       price: 20000000,   pps: 7800, owned: 0 },
+  { name: "🧠 Chad AI Mainframe",         price: 330000000,   pps: 44000, owned: 0 },
+  { name: "🕶️ Matrix Code Generator",    price: 5100000000,  pps: 260000, owned: 0 }
 ];
 
 // ==== Sauvegarde / Chargement avec utilisateur connecté via serveur ====
@@ -175,9 +176,12 @@ window.addEventListener('load', async () => {
 window.addEventListener('pagehide', saveGameToServer);
 
 // ==== Click manuel ====
+function getClickPower() {
+  return 1 + factories[0].owned;
+}
 
 pessi.addEventListener('click', e => {
-  count++;
+  count += getClickPower();
   clickcount++;
   clickSound.currentTime = 0;
   clickSound.play();
@@ -256,7 +260,12 @@ function buyFactory(index) {
     count -= factory.price;
     factory.owned++;
     updatePPS();
-    factory.price = Math.floor(factory.price * 1.15);
+
+    if (index === 0) {
+      factory.price = Math.floor(factory.price * 2);
+    } else {
+      factory.price = Math.floor(factory.price * 1.15);
+    }
 
     console.log(`Usine "${factory.name}" achetée: now owned=${factory.owned}, nouveau prix=${factory.price}`);
 
