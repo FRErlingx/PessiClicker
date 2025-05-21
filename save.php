@@ -17,30 +17,18 @@ if (!$data || !isset($data['user_id'], $data['saveData'])) {
 }
 
 $user_id = intval($data['user_id']);
-$saveData = json_encode($data['saveData']); // Stock JSON string
+$saveData = json_encode($data['saveData']);
 
-// Log taille JSON reçu (dans error_log)
-error_log("Save data length for user {$user_id}: " . strlen($saveData));
-
-if (strlen($saveData) > 100000) { // Ajuste la limite selon ta BDD
-    error_log("Attention: Save data très volumineuse pour user {$user_id}");
-}
-
-// Vérification taille maximale du champ SQL (à ajuster côté BDD)
-
-// Vérifier si sauvegarde existe déjà
 $stmt = $mysqli->prepare("SELECT id FROM saves WHERE user_id = ?");
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
-    // Mise à jour
     $stmt = $mysqli->prepare("UPDATE saves SET save_json = ? WHERE user_id = ?");
     $stmt->bind_param("si", $saveData, $user_id);
     $success = $stmt->execute();
 } else {
-    // Insertion nouvelle sauvegarde
     $stmt = $mysqli->prepare("INSERT INTO saves (user_id, save_json) VALUES (?, ?)");
     $stmt->bind_param("is", $user_id, $saveData);
     $success = $stmt->execute();

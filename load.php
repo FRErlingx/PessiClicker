@@ -17,7 +17,6 @@ if (!$data || !isset($data['user_id'])) {
 }
 
 $user_id = intval($data['user_id']);
-
 $stmt = $mysqli->prepare("SELECT save_json FROM saves WHERE user_id = ?");
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
@@ -25,19 +24,10 @@ $result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
-    $save_json = $row['save_json'];
-    $saveData = json_decode($save_json, true);
-
-    error_log("Chargement sauvegarde utilisateur {$user_id}, taille: " . strlen($save_json));
-
-    echo json_encode([
-        'status' => 'success',
-        'saveData' => $saveData
-    ]);
+    $saveData = json_decode($row['save_json'], true);
+    echo json_encode(['status' => 'success', 'saveData' => $saveData]);
 } else {
-    echo json_encode([
-        'status' => 'no_save'
-    ]);
+    echo json_encode(['status' => 'no_save']);
 }
 
 $mysqli->close();
