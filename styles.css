@@ -1,0 +1,191 @@
+/* Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  background: radial-gradient(circle at center, #050a0f 0%, #000000 80%);
+  font-family: 'Press Start 2P', cursive, monospace;
+  color: #22ff22;
+  user-select: none;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Cadre arcade fullscreen */
+.arcade-frame {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  max-width: 900px; /* Optionnel : limiter la largeur max */
+  max-height: 1200px; /* Optionnel : limiter la hauteur max */
+  background: linear-gradient(135deg, #222, #000);
+  border: 40px solid #333;
+  border-radius: 30px 30px 40px 40px;
+  box-shadow:
+    inset 0 0 50px #00ff00cc,
+    0 0 60px #00ff0099,
+    0 20px 50px #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Écran vert (plein cadre) */
+.screen {
+  flex: 1;
+  width: 100%;
+  background: #002200;
+  border-radius: 15px;
+  box-shadow:
+    inset 0 0 50px #00ff0044,
+    0 0 30px #00ff00cc;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* alignement vers le haut */
+  align-items: center;
+  padding: 40px 40px 40px; /* réduit un peu top padding */
+  text-align: center;
+  box-sizing: border-box;
+  gap: 30px; /* espacement vertical entre enfants */
+}
+
+/* Titre */
+.game-title {
+  font-size: 4vw; /* taille relative à la largeur écran */
+  min-font-size: 28px;
+  color: #22ff22;
+  text-shadow:
+    0 0 12px #22ff22,
+    0 0 20px #00cc00,
+    0 0 35px #00aa00;
+  animation: flicker 3s infinite;
+  user-select: none;
+}
+
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    opacity: 1;
+  }
+  20%, 22%, 24%, 55% {
+    opacity: 0.4;
+  }
+}
+
+/* Texte insérer une pièce */
+.insert-coin {
+  font-size: 2vw;
+  color: #11cc11;
+  text-shadow: 0 0 12px #11cc11;
+  letter-spacing: 3px;
+  font-weight: 700;
+  user-select: none;
+  margin-bottom: 40px;
+  min-font-size: 16px;
+}
+
+/* Bouton commencer (et bouton du formulaire) */
+.button {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 1.5vw;
+  min-font-size: 14px;
+  color: #000;
+  background: #22ff22;
+  padding: 15px 30px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 700;
+  box-shadow:
+    0 0 15px #22ff22,
+    inset 0 0 7px #00aa00;
+  margin: 20px 0;
+  transition: all 0.3s ease;
+  user-select: none;
+  cursor: pointer;
+  align-self: center;
+  width: max-content;
+  border: none;
+}
+
+.button:hover {
+  background: #11cc11;
+  box-shadow:
+    0 0 25px #11cc11,
+    inset 0 0 12px #007700;
+}
+
+.button:active {
+  transform: scale(0.95);
+}
+
+/* Formulaire login */
+#loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  max-width: 400px;
+}
+
+#loginForm input {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 1.3vw;
+  min-font-size: 14px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  box-shadow:
+    inset 0 0 10px #00ff00cc;
+  background-color: #003300;
+  color: #22ff22;
+  user-select: text;
+  transition: background-color 0.3s ease;
+}
+
+#loginForm input::placeholder {
+  color: #11cc11;
+  opacity: 0.7;
+}
+
+#loginForm input:focus {
+  background-color: #004400;
+}
+
+#loginForm button {
+  /* reprend les styles .button mais s’adapte au bouton de formulaire */
+  font-family: 'Press Start 2P', monospace;
+  font-size: 1.5vw;
+  min-font-size: 14px;
+  color: #000;
+  background: #22ff22;
+  padding: 15px 30px;
+  border-radius: 12px;
+  font-weight: 700;
+  box-shadow:
+    0 0 15px #22ff22,
+    inset 0 0 7px #00aa00;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+#loginForm button:hover {
+  background: #11cc11;
+  box-shadow:
+    0 0 25px #11cc11,
+    inset 0 0 12px #007700;
+}
+
+#loginForm button:active {
+  transform: scale(0.95);
+}

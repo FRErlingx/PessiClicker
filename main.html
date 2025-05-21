@@ -5,139 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Pessi Clicker - Accueil</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
-  <style>
-    /* Reset */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html, body {
-      height: 100%;
-      width: 100%;
-      background: radial-gradient(circle at center, #050a0f 0%, #000000 80%);
-      font-family: 'Press Start 2P', cursive, monospace;
-      color: #22ff22;
-      user-select: none;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    /* Cadre arcade fullscreen */
-    .arcade-frame {
-      position: relative;
-      width: 100vw;
-      height: 100vh;
-      max-width: 900px; /* Optionnel : limiter la largeur max */
-      max-height: 1200px; /* Optionnel : limiter la hauteur max */
-      background: linear-gradient(135deg, #222, #000);
-      border: 40px solid #333;
-      border-radius: 30px 30px 40px 40px;
-      box-shadow:
-        inset 0 0 50px #00ff00cc,
-        0 0 60px #00ff0099,
-        0 20px 50px #000;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    /* Écran vert (plein cadre) */
-    .screen {
-      flex: 1;
-      width: 100%;
-      background: #002200;
-      border-radius: 15px;
-      box-shadow:
-        inset 0 0 50px #00ff0044,
-        0 0 30px #00ff00cc;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      padding: 60px 40px 40px;
-      text-align: center;
-      box-sizing: border-box;
-    }
-
-    /* Titre */
-    .game-title {
-      font-size: 4vw; /* taille relative à la largeur écran */
-      min-font-size: 28px;
-      color: #22ff22;
-      text-shadow:
-        0 0 12px #22ff22,
-        0 0 20px #00cc00,
-        0 0 35px #00aa00;
-      animation: flicker 3s infinite;
-      user-select: none;
-    }
-
-    @keyframes flicker {
-      0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-        opacity: 1;
-      }
-      20%, 22%, 24%, 55% {
-        opacity: 0.4;
-      }
-    }
-
-    /* Texte insérer une pièce */
-    .insert-coin {
-      font-size: 2vw;
-      color: #11cc11;
-      text-shadow: 0 0 12px #11cc11;
-      letter-spacing: 3px;
-      font-weight: 700;
-      user-select: none;
-      margin-bottom: 40px;
-      min-font-size: 16px;
-    }
-
-    /* Bouton commencer */
-    .button {
-      font-family: 'Press Start 2P', monospace;
-      font-size: 1.5vw;
-      min-font-size: 14px;
-      color: #000;
-      background: #22ff22;
-      padding: 15px 30px;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: 700;
-      box-shadow:
-        0 0 15px #22ff22,
-        inset 0 0 7px #00aa00;
-      margin: 20px 0;
-      transition: all 0.3s ease;
-      user-select: none;
-      cursor: pointer;
-      align-self: center;
-      width: max-content;
-    }
-    .button:hover {
-      background: #11cc11;
-      box-shadow:
-        0 0 25px #11cc11,
-        inset 0 0 12px #007700;
-    }
-    .button:active {
-      transform: scale(0.95);
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="arcade-frame" role="main" aria-label="Écran d’arcade Pessi Clicker Accueil">
     <div class="screen">
       <h1 class="game-title">PESSI CLICKER</h1>
-      <a href="index.html" class="button" role="button" aria-label="Commencer le jeu">COMMENCER</a>
+
+      <!-- Formulaire login -->
+      <form id="loginForm" method="POST" action="login.php" autocomplete="off">
+        <input id="username" type="text" name="username" placeholder="Utilisateur" required />
+        <input id="password" type="password" name="password" placeholder="Mot de passe" required />
+        <button type="submit" class="button" role="button" aria-label="Commencer et se connecter">COMMENCER</button>
+      </form>
+
+      <div id="loginMessage" style="margin-top: 20px; color: #22ff22; font-size: 1rem;"></div>
       <div class="insert-coin">INSÉRER UNE PIÈCE POUR JOUER</div>
     </div>
   </div>
+  <script src="login.js"></script>
 </body>
 </html>
